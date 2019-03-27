@@ -67,3 +67,29 @@ func TestPlainAuth(t *testing.T) {
 
 
 ```
+
+# example
+
+An easy comman-line tool to send simple email.
+
+## Usage
+
+```
+$ go build -o email main.go
+$ ./email plain email.txt -c config.toml -s 'email for test' -t exmaple1@aliyun.com -t exmaple2@aliyun.com -a attachment_file -a another_attachment_file
+$ ./email html email.html -c config.toml -s 'test for sending html' -t example@aliyun.com
+$ ./email --help
+
+usage: email --conf=CONF --to=TO --subject=SUBJECT [<flags>] <type> <content-file>
+
+Flags:
+      --help               Show context-sensitive help (also try --help-long and --help-man).
+  -c, --conf=CONF          authuration configuraion
+  -a, --attach=ATTACH ...  attach file
+  -t, --to=TO ...          target
+  -s, --subject=SUBJECT    email subject
+
+Args:
+  <type>          content type
+  <content-file>  content body
+```

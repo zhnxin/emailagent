@@ -1,0 +1,6 @@
+Host = "smtp.aliyun.com"
+Port = 465
+IsSSL = true
+User ="exmaple@aliyun.com"
+NickName = "nick"
+Password = ""
