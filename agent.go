@@ -64,7 +64,7 @@ func (ec *Agent) sendMailTLS(msg *email.Message) error {
 		return fmt.Errorf("Agent:clientMail:%v", err)
 	}
 
-	for _, addr := range msg.To {
+	for _, addr := range msg.Tolist() {
 		if err = client.Rcpt(addr); err != nil {
 			return fmt.Errorf("Agent:Rcpt:%v", err)
 		}
@@ -85,7 +85,7 @@ func (ec *Agent) sendMailTLS(msg *email.Message) error {
 }
 
 func (ec *Agent) sendMail(msg *email.Message) error {
-	return smtp.SendMail(ec.addr, ec.auth, ec.user, msg.To, msg.Bytes())
+	return smtp.SendMail(ec.addr, ec.auth, ec.user, msg.Tolist(), msg.Bytes())
 }
 
 //SendEmail send email by string content

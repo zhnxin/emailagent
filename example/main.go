@@ -17,6 +17,8 @@ var (
 	attachments = kingpin.Flag("attach", "attach file").Short('a').ExistingFiles()
 	to          = kingpin.Flag("to", "target").Required().Short('t').Strings()
 	subject     = kingpin.Flag("subject", "email subject").Required().Short('s').String()
+	Cc          = kingpin.Flag("cc", "email cc").Strings()
+	Bcc         = kingpin.Flag("bcc", "email bcc").Strings()
 )
 
 type EmailConfig struct {
@@ -60,6 +62,8 @@ func main() {
 		msg.From.Name = config.User
 	}
 	msg.To = *to
+	msg.Cc = *Cc
+	msg.Bcc = *Bcc
 	agent := emailagent.New(config.User, config.Password, config.Host, config.Port, config.IsSSL)
 	if err := agent.SendEmail(msg); err != nil {
 		log.Fatal(err)
