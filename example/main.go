@@ -17,8 +17,8 @@ var (
 	attachments = kingpin.Flag("attach", "attach file").Short('a').ExistingFiles()
 	to          = kingpin.Flag("to", "target").Required().Short('t').Strings()
 	subject     = kingpin.Flag("subject", "email subject").Required().Short('s').String()
-	Cc          = kingpin.Flag("cc", "email cc").Strings()
-	Bcc         = kingpin.Flag("bcc", "email bcc").Strings()
+	Cc          = kingpin.Flag("cc", "email CarbonCopy").Strings()
+	Bcc         = kingpin.Flag("bcc", "email Blind CarbonCopy").Strings()
 )
 
 type EmailConfig struct {
